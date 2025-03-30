@@ -14,13 +14,13 @@ const Navbar = () => {
   return (
     <>
       {user && (
-        <div className="tracking-wider text-xl text-purple-500 mb-2 font-bold text-">
+        <div className="tracking-wider text-xl text-purple-500 font-bold text-">
           Welcome back,{' '}
           {user.firstName[0].toUpperCase() + user.firstName.slice(1)}{' '}
         </div>
       )}
       <div className="flex justify-between items-center bg-purple-100 p-3">
-        <img src={assets.logo} alt="logo" className="w-28 cursor-pointer" />
+        <Link to="/"><img src={assets.logo} alt="logo" className="w-28 cursor-pointer" /></Link>
         <div className="flex items-center gap-5 text-gray-500">
           <div>
             <Link to="" className="mx-1 border border-blue-500 p-2">

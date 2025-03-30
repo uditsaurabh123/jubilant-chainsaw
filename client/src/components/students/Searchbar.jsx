@@ -23,11 +23,12 @@ const Searchbar = () => {
             searchBasedOnsearchTerm()
           }}
         />
+        <>
         <input
           id="search"
           name="search"
           type="text"
-          placeholder="Search..."
+          placeholder="e.g., HTML CSS JavaScript Tailwind"
           className="w-lg p-5 border text-blue-300- border-purple-300
               focus:outline-none focus:ring-2 focus:ring-purple-400 hover:border-purple-400 hover:text-purple-500
               "
@@ -41,8 +42,10 @@ const Searchbar = () => {
             }
           }}
         />
-        {/* Icon inside input */}
-      </div>
+
+      </>
+        </div>
+        <small className="text-gray-500 font-bold">Separate each keyword with a space.</small>
     </div>
   )
 }

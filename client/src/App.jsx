@@ -5,10 +5,17 @@ import { Route, Routes, useMatch } from 'react-router-dom'
 import Navbar from './components/students/Navbar'
 import SignIn from './pages/students/signin'
 import TestimonialsSection from './components/students/TestimonialsSection'
+import Footer from './components/students/Footer'
+import DemoPage from './pages/students/Demo'
 
 const Home = React.lazy(() => import('./pages/students/Home'))
 const CoursesList = React.lazy(() => import('./pages/students/CoursesList'))
 const CourseDetails = React.lazy(() => import('./pages/students/CourseDetails'))
+const CourseContent = React.lazy(() => import('./pages/students/CourseContent'))
+const CourseDescription = React.lazy(() => import('./pages/students/CourseDescription'))
+const CourseReviews = React.lazy(() => import('./pages/students/CourseReviews'))
+
+
 const MyEnrollments = React.lazy(() => import('./pages/students/MyEnrollments'))
 const Player = React.lazy(() => import('./pages/students/Player'))
 const Loading = React.lazy(() => import('./pages/students/Loading'))
@@ -32,7 +39,7 @@ function App() {
   const VITE_CLERK_PUBLISHABLE_KEY =
     'pk_test_c29saWQtc3RhcmZpc2gtNTUuY2xlcmsuYWNjb3VudHMuZGV2JA'
   return (
-    <div className="min-h-screen text-default m-6">
+    <div className="min-h-screen text-default m-3">
       {!isEducator && <Navbar />}
       <h1 className="text-purple-300">LearnEase - Code With Ease</h1>
       <AppProvider value={value}>
@@ -40,11 +47,16 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/students" element={<Home />} />
           <Route path="/students/courses-List" element={<CoursesList />} />
+          <Route path="/students/demo" element={<DemoPage />} />
           <Route
             path="/students/courses-List/:input"
             element={<CoursesList />}
           />
-          <Route path="/students/course/:id" element={<CourseDetails />} />
+          <Route path="/students/course/:id" element={<CourseDetails />}>
+            <Route path="description" element={<CourseDescription />}/>
+            <Route path="course-content" element={<CourseContent />}/>
+            <Route path="course-reviews" element={<CourseReviews />}/>
+          </Route>
           <Route path="/students/my-Enrollmemnts" element={<MyEnrollments />} />
           <Route
             path="/students/my-Enrollmemnt/:id"
@@ -62,6 +74,7 @@ function App() {
           </Route>
         </Routes>
       </AppProvider>
+      <Footer/>
     </div>
   )
 }

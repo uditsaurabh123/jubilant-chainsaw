@@ -6,7 +6,7 @@ const TestimonialsSection = () => {
     <h3 className='text-black font-medium text-base text-grey-500'>Testimonial Section</h3>
     <div className="rounded-xl">Hear from our learners how our platform has made difference in so many lives and how our platform has made difference in our lives.</div>
     <div className='grid grid-cols-3'>
-      {dummyTestimonial.map(testimonial => <TestimonialCard testimonial={testimonial} />)}
+      {dummyTestimonial.map((testimonial,key) => <TestimonialCard key={key} testimonial={testimonial} />)}
     </div>
     </div>)
 }

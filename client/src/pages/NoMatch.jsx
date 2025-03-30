@@ -1,5 +1,5 @@
 import React from 'react'
 const NoMatch = () => {
-  return <div>{/* Component content goes here */}</div>
+  return <div>No match</div>
 }
 export default NoMatch

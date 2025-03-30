@@ -7,7 +7,7 @@ const CourseCard = ({ course, currency }) => {
   const show_rating = import.meta.env.VITE_STAR_RATING
 
   return (
-      <div className="my-4 mx-1 bg-gradient-to-r from-blue-100 via-purple-200 to-pink-100   bg-opacity-50 p-3 text-black rounded-lg">
+      <div className="my-4 mx-1 bg-gradient-to-r from-blue-100 via-purple-200 to-pink-100 bg-opacity-50 p-3 text-black rounded-lg">
         <Link to={`/students/course/${course._id}`}>
           <img src={course.courseThumbnail}/>
           <h3 className="text-xl underline">{course.courseTitle}</h3>
