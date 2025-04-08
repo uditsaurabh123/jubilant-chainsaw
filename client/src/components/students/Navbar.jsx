@@ -23,7 +23,7 @@ const Navbar = () => {
         <Link to="/"><img src={assets.logo} alt="logo" className="w-28 cursor-pointer" /></Link>
         <div className="flex items-center gap-5 text-gray-500">
           <div>
-            <Link to="" className="mx-1 border border-blue-500 p-2">
+            <Link to="/students/become-educators" className="mx-1 border border-blue-500 p-2">
               Become Educators
             </Link>
             <Link

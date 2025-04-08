@@ -1,0 +1,25 @@
+# Node.js modules
+node_modules/
+
+# .env file (environment variables)
+.env
+
+# Logs
+logs/
+*.log
+
+# MacOS system files
+.DS_Store
+
+# npm debug log
+npm-debug.log*
+
+# build files (if using a bundler like Webpack or Vite at the root level)
+dist/
+build/
+
+# Temporary files created by text editors
+.vscode/
+.idea/
+
+# Optional, you may want to ignore other platform-specific or project-specific files
