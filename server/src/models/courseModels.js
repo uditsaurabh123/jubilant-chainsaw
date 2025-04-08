@@ -1,17 +1,20 @@
 const { Schema, model } = require("dynamoose")
 const dynamoose = require("dynamoose")
+var AWS = require('aws-sdk');
+
+var dd = new AWS.DynamoDB({ 'region': 'us-east-1' });
 const commentSchema = new Schema({
     commentId: {
         type: String,
-        required: true,
+
     },
     userId: {
         type: String,
-        required: true,
+
     },
     text: {
         type: String,
-        required: true,
+
     },
     createdAt: { type: Date, default: Date.now }
 })
@@ -19,20 +22,20 @@ const commentSchema = new Schema({
 const chapterSchema = new Schema({
     chapterId: {
         type: String,
-        required: true,
+
     },
     title: {
         type: String,
-        required: true,
+
     },
     content: {
         type: String,
-        required: true,
+
     },
     comments: { type: Array, schema: [commentSchema] },
     video: {
         type: String,
-        required: true,
+
     },
     createdAt: { type: Date, default: Date.now }
 })
@@ -40,39 +43,40 @@ const chapterSchema = new Schema({
 const sectionSchema = new Schema({
     sectionId: {
         type: String,
-        required: true,
+
     },
     sectionTitle: {
         type: String,
-        required: true,
+
     },
     description: {
         type: String,
-        required: true,
+
     },
     chapters: { type: Set, schema: [chapterSchema] },
     createdAt: { type: Date, default: Date.now }
 })
 
 const courseRatings = new Schema({
-    userId: { type: String, required: true },
-    rating: { type: Number, required: true },
+    ratingId: { type: Number, },
+    userId: { type: String, },
+    rating: { type: Number, },
     createdAt: { type: Date, default: Date.now }
 })
 
 const courseSchema = new Schema({
-    courseTitle: { type: String, required: true },
-    courseDescription: { type: String, required: true },
-    coursePrice: { type: Number, required: true },
-    isPublished: { type: Boolean, required: true },
-    discount: { type: Number, required: true },
+    courseTitle: { type: String, },
+    courseDescription: { type: String, },
+    coursePrice: { type: Number, },
+    isPublished: { type: Boolean, },
+    discount: { type: Number, },
     courseContent: { type: Set, schema: [chapterSchema] },
-    educator: { type: String, required: true },
+    educator: { type: String, },
     enrolledStudents: { type: Set, schema: [String] },
     courseRatings: { type: Set, schema: [courseRatings] },
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now },
-    courseThumbnail: { type: String, required: true },
+    courseThumbnail: { type: String, },
 })
 
 

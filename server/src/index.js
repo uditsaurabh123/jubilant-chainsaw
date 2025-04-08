@@ -14,6 +14,19 @@ dotenv.config()
 
 const isProduction = process.env.NODE_ENV === "production"
 
+// Create new DynamoDB instance
+const ddb = new dynamoose.aws.ddb.DynamoDB({
+    "credentials": {
+        "accessKeyId": "AKID",
+        "secretAccessKey": "SECRET"
+    },
+    "region": "us-east-1"
+});
+
+// Set DynamoDB instance to the Dynamoose DDB instance
+dynamoose.aws.ddb.set(ddb);
+dynamoose.aws.ddb.local('http://localhost:8000');
+
 //console.log(process.env)
 
 if (!isProduction) {
@@ -26,7 +39,7 @@ const CORS_CREDENTIALS = process.env.CORS_CREDENTIALS || true
 
 
 // Configure Dynamoose to connect to the local DynamoDB instance
-console.log("running fine ....1")
+
 app.use(express.json())
 app.use(helmet())
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }))
@@ -35,16 +48,14 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors())
 
-console.log("running fine ....1")
+
 app.get("/", (req, res, next) => {
     return res.json({
         message: "Welcome to the API",
     })
 })
-console.log("running fine ....2")
 app.use("/api/courses", courseController)
 
-console.log("running fine ....3")
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 })
